@@ -31,8 +31,4 @@ public class Libro extends Recurso {
         return "Recurso[activo="+activo+",fechaIngreso="+fechaIngreso+"nombre="+nombre+"] ";
     }
 
-    
-    
-
-    
 }
