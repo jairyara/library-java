@@ -7,6 +7,7 @@ public class Periodico extends Recurso{
     private String editorial;
 
     public Periodico(LocalDate _fechaPublicacion,String _editorial){
+        super();
         fechaPublicacion = _fechaPublicacion;
         editorial = _editorial;
     }

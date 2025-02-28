@@ -7,10 +7,10 @@ abstract class Recurso {
     protected LocalDateTime fechaIngreso;
     protected boolean activo;
 
-    public Recurso(){
-        nombre = _nombre;
-        fechaIngreso = _fechaIngreso;
-        activo = _activo;
+    public Recurso() {
+        this.nombre = nombre;
+        this.fechaIngreso = fechaIngreso;
+        this.activo = activo;
     }
 
     public String getNombre(){
