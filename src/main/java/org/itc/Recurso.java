@@ -7,7 +7,7 @@ abstract class Recurso {
     protected LocalDateTime fechaIngreso;
     protected boolean activo;
 
-    public Recurso(String _nombre,LocalDateTime _fechaIngreso,boolean _activo){
+    public Recurso(){
         nombre = _nombre;
         fechaIngreso = _fechaIngreso;
         activo = _activo;
