@@ -2,10 +2,10 @@ package org.itc;
 
 import java.time.LocalDateTime;
 
-abstract class Recurso {
-    protected String nombre;
-    protected LocalDateTime fechaIngreso;
-    protected boolean activo;
+public abstract class Recurso {
+    private String nombre;
+    private LocalDateTime fechaIngreso;
+    private boolean activo;
 
     public Recurso() {
         this.nombre = nombre;
