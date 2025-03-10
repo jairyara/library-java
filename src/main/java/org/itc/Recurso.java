@@ -15,6 +15,10 @@ public abstract class Recurso {
         this.estado = estado;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String getNombre(){
         return nombre;
     }
@@ -48,17 +52,22 @@ public abstract class Recurso {
         } else {
             System.out.println("El usuario ya está inactivo.");
         }
-    } 
-    
+    }
+
     public boolean coincideConCriterio(String criterio) {
         if (criterio == null) {
             return false;
         }
-        return nombre.trim().equalsIgnoreCase(criterio.trim());
+        return nombre.trim().equalsIgnoreCase(criterio.trim()) ||
+                fechaIngreso.toString().contains(criterio.trim());
     }
-    
-    public String toString(){
-        return "Recurso[activo="+activo+",fechaIngreso="+fechaIngreso+"nombre="+nombre+"] ";
+
+    @Override
+    public String toString() {
+        return "RECURSO\n" +
+                "Nombre=" + nombre + "\n" +
+                "FechaIngreso=" + fechaIngreso + "\n" +
+                "Activo=" + activo + "\n";
     }
 
 }

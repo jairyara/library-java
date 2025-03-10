@@ -5,11 +5,12 @@ public class Libro extends Recurso {
     private String editorial;
     private int anio;
 
-    public Libro(String _nombre,String _autor,String _editoria,int _anio){
-        nombre =_nombre;
-        autor =_autor;
-        editorial =_editoria;
-        anio = _anio;
+    public Libro(String nombre,String autor,String editoria,int anio){
+        super();
+        this.setNombre(nombre);
+        this.autor =autor;
+        this.editorial =editoria;
+        this.anio = anio;
     }
 
     public String getAutor() {
@@ -23,12 +24,23 @@ public class Libro extends Recurso {
     public int getanio(){
         return anio;
     }
+    @Override
     public boolean coincideConCriterio(String criterio) {
-        // Verifica si el nombre coincide exactamente con el criterio
-        return nombre.equals(criterio);  // Retorna true si coincide, false si no
+        return super.coincideConCriterio(criterio) ||
+                autor.equalsIgnoreCase(criterio) ||
+                editorial.equalsIgnoreCase(criterio) ||
+                Integer.toString(anio).equals(criterio);
     }
-    public String toString(){
-        return "Recurso[activo="+activo+",fechaIngreso="+fechaIngreso+"nombre="+nombre+"] ";
+
+    @Override
+    public String toString() {
+        return "LIBRO\n" +
+                "Nombre=" + getNombre() + "\n" +
+                "FechaIngreso=" + getFechaIngreso() + "\n" +
+                "Activo=" + isActivo() + "\n" +
+                "Autor=" + autor + "\n" +
+                "Editorial=" + editorial + "\n" +
+                "Año=" + anio + "\n";
     }
 
 }

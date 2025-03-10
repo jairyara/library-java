@@ -12,12 +12,20 @@ public class Periodico extends Recurso{
         this.editorial = editorial;
     }
 
+    @Override
     public boolean coincideConCriterio(String criterio) {
-        // Verifica si el nombre coincide exactamente con el criterio
-        return nombre.equals(criterio);  // Retorna true si coincide, false si no
+        return super.coincideConCriterio(criterio) ||
+                fechaPublicacion.toString().contains(criterio) ||
+                editorial.equalsIgnoreCase(criterio);
     }
-    public String toString(){
-        return "Recurso[activo="+activo+",fechaIngreso="+fechaIngreso+"nombre="+nombre+"] ";
+    @Override
+    public String toString() {
+        return "PERIODICO\n" +
+                "Nombre=" + getNombre() + "\n" +
+                "FechaIngreso=" + getFechaIngreso() + "\n" +
+                "Activo=" + isActivo() + "\n" +
+                "FechaPublicacion=" + fechaPublicacion + "\n" +
+                "Editorial=" + editorial + "\n";
     }
     
 }
