@@ -8,8 +8,8 @@ public class Periodico extends Recurso{
 
     public Periodico(LocalDate _fechaPublicacion,String _editorial){
         super();
-        fechaPublicacion = _fechaPublicacion;
-        editorial = _editorial;
+        this.fechaPublicacion = fechaPublicacion;
+        this.editorial = editorial;
     }
 
     public boolean coincideConCriterio(String criterio) {

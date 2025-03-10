@@ -5,9 +5,9 @@ public class Computador extends Recurso{
     private String sistemaOperativo;
 
     public Computador(String _marca,String _modelo,String _sistemaOperativo){
-        marca = _marca;
-        modelo= _modelo;
-        sistemaOperativo = _sistemaOperativo;
+        this.marca = marca;
+        this.modelo= modelo;
+        this.sistemaOperativo =sistemaOperativo;
 
     }
     public String getMarca(){

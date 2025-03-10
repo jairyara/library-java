@@ -6,11 +6,13 @@ public abstract class Recurso {
     private String nombre;
     private LocalDateTime fechaIngreso;
     private boolean activo;
+    private String estado ="Activo";
 
     public Recurso() {
         this.nombre = nombre;
         this.fechaIngreso = fechaIngreso;
         this.activo = activo;
+        this.estado = estado;
     }
 
     public String getNombre(){
@@ -19,6 +21,14 @@ public abstract class Recurso {
 
     public LocalDateTime getFechaIngreso(){
         return fechaIngreso;        
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public boolean isActivo() {
+        return activo;
     }
     
    
@@ -32,15 +42,19 @@ public abstract class Recurso {
 
     public void darDeBaja() {
         if (activo) {
-            activo = false;  // Cambia el estado a inactivo
+            activo = false;
+            estado ="inactivo";  // Cambia el estado a inactivo
             System.out.println("El usuario ha sido dado de baja.");
         } else {
             System.out.println("El usuario ya está inactivo.");
         }
     } 
+    
     public boolean coincideConCriterio(String criterio) {
-        // Verifica si el nombre coincide exactamente con el criterio
-        return nombre.equals(criterio);  // Retorna true si coincide, false si no
+        if (criterio == null) {
+            return false;
+        }
+        return nombre.trim().equalsIgnoreCase(criterio.trim());
     }
     
     public String toString(){
