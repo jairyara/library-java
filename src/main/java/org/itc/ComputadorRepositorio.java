@@ -1,6 +1,5 @@
 package org.itc;
 
-import org.itc.Computador;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -8,7 +7,7 @@ import java.util.List;
 
 @Component
 public class ComputadorRepositorio implements Repositorio<Computador> {
-    private List<Computador> computadores = new ArrayList<>();
+    private final List<Computador> computadores = new ArrayList<>();
 
     @Override
     public void agregar(Computador computador) {
@@ -22,7 +21,7 @@ public class ComputadorRepositorio implements Repositorio<Computador> {
 
     @Override
     public Computador buscar(int id) {
-        return computadores.stream().filter(computador -> computador.getNombre() == ).findFirst().orElse(null);
+        return computadores.get(id);
     }
 
     @Override

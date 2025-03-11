@@ -1,6 +1,5 @@
 package org.itc;
 
-import org.itc.Periodico;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
