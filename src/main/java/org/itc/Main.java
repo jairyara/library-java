@@ -2,7 +2,6 @@ package org.itc;
 
 import java.time.LocalDate;
 import java.util.Collection;
-import org.itc.ServicioBiblioteca;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
@@ -11,7 +10,7 @@ public class Main {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
         // Crear una instancia de ServicioBiblioteca
-        ServicioBiblioteca servicioBiblioteca = new ServicioBiblioteca();
+        ServicioBiblioteca servicioBiblioteca = context.getBean(ServicioBiblioteca.class);
 
         // Agregar al menos 3 recursos de cada tipo definido en el diagrama UML
         servicioBiblioteca.agregar(new Libro("Libro1", "Autor1", "Editorial1", 2001));
@@ -24,7 +23,6 @@ public class Main {
 
         servicioBiblioteca.agregar(new Periodico(LocalDate.of(2021, 1, 1), "Editorial1", 1));
         servicioBiblioteca.agregar(new Periodico(LocalDate.of(2022, 2, 2), "Editorial2", 2));
-
 
         // Imprimir la lista de recursos actual en la biblioteca
         System.out.println("Lista de recursos en la biblioteca:");
