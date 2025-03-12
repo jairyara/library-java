@@ -1,3 +1,15 @@
+# Explique la diferencia entre @Component y @Configuration en Spring
+
+## @Component
+
+`@Component` es una anotación básica en *Spring Boot* que se usa para indicar que una clase debe ser administrada por el framework. Cuando se agrega esta anotación a una clase, *Spring* la detecta automáticamente y la incluye en su sistema interno, lo que permite usarla en otras partes del programa sin necesidad de crear manualmente sus instancias.
+
+Básicamente, `@Component` ayuda a que *Spring Boot* reconozca y gestione las clases sin que el desarrollador tenga que hacerlo manualmente.
+
+## @Configuration
+
+`@Configuration` es una anotación que se usa cuando una clase necesita proporcionar configuraciones específicas para el programa. Se utiliza especialmente para definir métodos que crean y administran objetos (*Beans*) dentro del sistema.
+
 # Principio de Inversión de Control
 
 ## ¿Qué es?
@@ -24,17 +36,7 @@ En nuestro caso, tenemos un sistema para gestionar libros, periódicos y computa
 - Spring se encarga de gestionar estas clases gracias a la anotación `@Repository`, lo que significa que no necesitamos crearlas manualmente cada vez que queramos usarlas.
 - Cuando un servicio necesita un repositorio, simplemente lo pide (como cuando pides comida en un restaurante) y Spring se lo entrega.
 
-# Explique la diferencia entre @Component y @Configuration en Spring
 
-## @Component
-
-`@Component` es una anotación básica en *Spring Boot* que se usa para indicar que una clase debe ser administrada por el framework. Cuando se agrega esta anotación a una clase, *Spring* la detecta automáticamente y la incluye en su sistema interno, lo que permite usarla en otras partes del programa sin necesidad de crear manualmente sus instancias.
-
-Básicamente, `@Component` ayuda a que *Spring Boot* reconozca y gestione las clases sin que el desarrollador tenga que hacerlo manualmente.
-
-## @Configuration
-
-`@Configuration` es una anotación que se usa cuando una clase necesita proporcionar configuraciones específicas para el programa. Se utiliza especialmente para definir métodos que crean y administran objetos (*Beans*) dentro del sistema.
 
 La diferencia clave con `@Component` es que `@Configuration` garantiza que los métodos dentro de la clase que están marcados con `@Bean` solo se ejecuten una vez, evitando que se creen múltiples copias innecesarias de los mismos objetos. Además, puede combinarse con `@ComponentScan` para indicar a *Spring* en qué paquetes debe buscar automáticamente otras clases anotadas.
 
