@@ -10,6 +10,14 @@ Básicamente, `@Component` ayuda a que *Spring Boot* reconozca y gestione las cl
 
 `@Configuration` es una anotación que se usa cuando una clase necesita proporcionar configuraciones específicas para el programa. Se utiliza especialmente para definir métodos que crean y administran objetos (*Beans*) dentro del sistema.
 
+# Ejemplo de una clase inyectada desde el constructor
+
+- [ServicioBiblioteca.java](src/main/java/org/itc/ServicioBiblioteca.java) - Lógica de gestión de la biblioteca.
+- [LibroRepositorio.java](src/main/java/org/itc/LibroRepositorio.java) - Simula el almacenamiento de libros.
+- [AppConfig.java](src/main/java/org/itc/AppConfig.java) - Configuración de Spring.
+- [Main.java](src/main/java/org/itc/Main.java) - Punto de entrada de la aplicación.
+
+
 # Principio de Inversión de Control
 
 ## ¿Qué es?
@@ -58,5 +66,10 @@ Spring puede obtener valores desde distintas fuentes, como:
 
 De esta manera, si es necesario cambiar un valor, solo se modifica en el archivo de configuración en lugar de cambiar el código fuente.
 
+# Ejemplo combinación de multiples repositorios
 
+- 📖 [`RepositorioLibro`](src/main/java/org/itc/LibroRepositorio.java) para almacenar libros.
+- 💻 [`RepositorioComputador`](src/main/java/org/itc/ComputadorRepositorio.java) para registrar computadores disponibles.
+- 📰 [`RepositorioPeriodico`](src/main/java/org/itc/PeriodicoRepositorio.java) para administrar periódicos.
+- 📚 [`ServicioBiblioteca`](src/main/java/org/itc/ServicioBiblioteca.java) combina los datos de todos los repositorios.  
 

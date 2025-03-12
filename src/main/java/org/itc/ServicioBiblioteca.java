@@ -10,11 +10,13 @@ package org.itc;
     public class ServicioBiblioteca {
         private final Repositorio<Libro> repositorioLibro;
         private final Repositorio<Computador> repositorioComputador;
+        private final Repositorio<Periodico> repositorioPeriodico;
 
         @Autowired
-        public ServicioBiblioteca(Repositorio<Libro> repositorioLibro, Repositorio<Computador> repositorioComputador) {
+        public ServicioBiblioteca(Repositorio<Libro> repositorioLibro, Repositorio<Computador> repositorioComputador, Repositorio<Periodico> repositorioPeriodico) {
             this.repositorioLibro = repositorioLibro;
             this.repositorioComputador = repositorioComputador;
+            this.repositorioPeriodico = repositorioPeriodico;
         }
 
         public void agregar(Recurso recurso) {
@@ -50,6 +52,7 @@ package org.itc;
             List<Recurso> todosRecursos = new ArrayList<>();
             todosRecursos.addAll(repositorioLibro.obtenerTodos());
             todosRecursos.addAll(repositorioComputador.obtenerTodos());
+            todosRecursos.addAll(repositorioPeriodico.obtenerTodos());
             return todosRecursos;
         }
     }
