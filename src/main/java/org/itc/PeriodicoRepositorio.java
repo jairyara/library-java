@@ -3,10 +3,11 @@ package org.itc;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Component
-public class PeriodicoRepositorio implements Repositorio<Periodico> {
+public class PeriodicoRepositorio implements RecursoRepositorio<Periodico> {
     private List<Periodico> periodicos = new ArrayList<>();
 
     @Override
@@ -20,8 +21,8 @@ public class PeriodicoRepositorio implements Repositorio<Periodico> {
     }
 
     @Override
-    public Periodico buscar(int id) {
-        return periodicos.stream().filter(periodico -> periodico.getId() == id).findFirst().orElse(null);
+    public Collection<Periodico> buscar(String nombre) {
+        return new ArrayList<>(periodicos);
     }
 
     @Override

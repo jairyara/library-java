@@ -3,10 +3,11 @@ package org.itc;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Component
-public class ComputadorRepositorio implements Repositorio<Computador> {
+public class ComputadorRepositorio implements RecursoRepositorio<Computador> {
     private final List<Computador> computadores = new ArrayList<>();
 
     @Override
@@ -20,8 +21,8 @@ public class ComputadorRepositorio implements Repositorio<Computador> {
     }
 
     @Override
-    public Computador buscar(int id) {
-        return computadores.get(id);
+    public Collection<Computador> buscar(String nombre) {
+        return new ArrayList<>(computadores);
     }
 
     @Override

@@ -3,10 +3,11 @@ package org.itc;
     import org.springframework.stereotype.Component;
 
     import java.util.ArrayList;
-    import java.util.List;
+import java.util.Collection;
+import java.util.List;
 
     @Component
-    public class LibroRepositorio implements Repositorio<Libro> {
+    public class LibroRepositorio implements RecursoRepositorio<Libro> {
         private final List<Libro> libros = new ArrayList<>();
 
         @Override
@@ -20,8 +21,8 @@ package org.itc;
         }
 
         @Override
-        public Libro buscar(int id) {
-            return libros.get(id);
+        public Collection<Libro> buscar(String nombre) {
+            return new ArrayList<>(libros);
         }
 
         @Override

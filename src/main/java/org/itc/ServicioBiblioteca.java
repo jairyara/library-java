@@ -8,12 +8,12 @@ package org.itc;
 
     @Component
     public class ServicioBiblioteca {
-        private final Repositorio<Libro> repositorioLibro;
-        private final Repositorio<Computador> repositorioComputador;
-        private final Repositorio<Periodico> repositorioPeriodico;
+        private final RecursoRepositorio<Libro> repositorioLibro;
+        private final RecursoRepositorio<Computador> repositorioComputador;
+        private final RecursoRepositorio<Periodico> repositorioPeriodico;
 
         @Autowired
-        public ServicioBiblioteca(Repositorio<Libro> repositorioLibro, Repositorio<Computador> repositorioComputador, Repositorio<Periodico> repositorioPeriodico) {
+        public ServicioBiblioteca(RecursoRepositorio<Libro> repositorioLibro, RecursoRepositorio<Computador> repositorioComputador, RecursoRepositorio<Periodico> repositorioPeriodico) {
             this.repositorioLibro = repositorioLibro;
             this.repositorioComputador = repositorioComputador;
             this.repositorioPeriodico = repositorioPeriodico;
@@ -34,15 +34,20 @@ package org.itc;
                 repositorioLibro.eliminar((Libro) recurso);
             } else if (recurso instanceof Computador) {
                 repositorioComputador.eliminar((Computador) recurso);
+            } else if (recurso instanceof Periodico) {
+                repositorioPeriodico.eliminar((Periodico) recurso);
             }
         }
 
-        public Collection<Recurso> buscarRecursos(String criterio) {
+        public Collection<Recurso> buscar(String criterio) {
             List<Recurso> resultados = new ArrayList<>();
             resultados.addAll(repositorioLibro.obtenerTodos().stream()
                     .filter(recurso -> recurso.coincideConCriterio(criterio))
                     .collect(Collectors.toList()));
             resultados.addAll(repositorioComputador.obtenerTodos().stream()
+                    .filter(recurso -> recurso.coincideConCriterio(criterio))
+                    .collect(Collectors.toList()));
+            resultados.addAll(repositorioPeriodico.obtenerTodos().stream()
                     .filter(recurso -> recurso.coincideConCriterio(criterio))
                     .collect(Collectors.toList()));
             return resultados;
