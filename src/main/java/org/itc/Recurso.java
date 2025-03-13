@@ -12,7 +12,6 @@ public abstract class Recurso {
         this.nombre = nombre;
         this.fechaIngreso = fechaIngreso;
         this.activo = activo;
-        this.estado = estado;
     }
 
     public void setNombre(String nombre) {

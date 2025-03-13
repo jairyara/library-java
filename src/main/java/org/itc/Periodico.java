@@ -3,19 +3,17 @@ package org.itc;
 import java.time.LocalDate;
 
 public class Periodico extends Recurso{
-    private int id;
     private LocalDate fechaPublicacion;
     private String editorial;
 
-    public Periodico(LocalDate fechaPublicacion,String editorial, int id){
+    public Periodico(LocalDate fechaPublicacion,String editorial){
         super();
-        this.id = id;
         this.fechaPublicacion = fechaPublicacion;
         this.editorial = editorial;
     }
 
-    public int getId() {
-        return id;
+    public String getEditorial(){
+        return editorial;
     }
 
     @Override
@@ -27,7 +25,6 @@ public class Periodico extends Recurso{
     @Override
     public String toString() {
         return "PERIODICO\n" +
-                "Id=" + id + "\n" +
                 "Nombre=" + getNombre() + "\n" +
                 "FechaIngreso=" + getFechaIngreso() + "\n" +
                 "Activo=" + isActivo() + "\n" +

@@ -1,13 +1,13 @@
 package org.itc;
 
+
 public class Libro extends Recurso {
     private String autor;
     private String editorial;
     private int anio;
 
-    public Libro(String nombre,String autor,String editoria,int anio){
+    public Libro(String autor,String editoria,int anio){
         super();
-        this.setNombre(nombre);
         this.autor =autor;
         this.editorial =editoria;
         this.anio = anio;
