@@ -21,7 +21,7 @@ public class ComputadorRepositorio implements RecursoRepositorio<Computador> {
     }
 
     @Override
-    public Collection<Computador> buscar(String nombre) {
+    public Collection<Computador> buscar(String critero) {
         return new ArrayList<>(computadores);
     }
 

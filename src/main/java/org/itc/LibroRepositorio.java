@@ -21,7 +21,7 @@ import java.util.List;
         }
 
         @Override
-        public Collection<Libro> buscar(String nombre) {
+        public Collection<Libro> buscar(String criterio) {
             return new ArrayList<>(libros);
         }
 

@@ -6,6 +6,6 @@ import java.util.List;
 public interface RecursoRepositorio<T extends Recurso> {
     void agregar(T elemento);
     void eliminar(T elemento);
-    Collection<T> buscar(String nombre);
+    Collection<T> buscar(String criterio);
     List<T> obtenerTodos();
 }
