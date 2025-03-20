@@ -54,11 +54,10 @@ public abstract class Recurso {
     }
 
     public boolean coincideConCriterio(String criterio) {
-        if (criterio == null) {
+        if (nombre == null || criterio == null) {
             return false;
         }
-        return nombre.trim().equalsIgnoreCase(criterio.trim()) ||
-                fechaIngreso.toString().contains(criterio.trim());
+        return nombre.trim().equalsIgnoreCase(criterio.trim());
     }
 
     @Override
