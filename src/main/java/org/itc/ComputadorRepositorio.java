@@ -22,7 +22,9 @@ public class ComputadorRepositorio implements RecursoRepositorio<Computador> {
 
     @Override
     public Collection<Computador> buscar(String criterio) {
-        return new ArrayList<>(computadores);
+        return computadores.stream()
+                .filter(computador -> computador.coincideConCriterio(criterio))
+                .toList();
     }
 
     @Override

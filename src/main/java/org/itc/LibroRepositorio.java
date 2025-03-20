@@ -22,7 +22,9 @@ import java.util.List;
 
         @Override
         public Collection<Libro> buscar(String criterio) {
-            return new ArrayList<>(libros);
+            return libros.stream()
+                    .filter(libro -> libro.coincideConCriterio(criterio))
+                    .toList();
         }
 
         @Override

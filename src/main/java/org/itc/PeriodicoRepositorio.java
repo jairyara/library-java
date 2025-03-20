@@ -22,7 +22,9 @@ public class PeriodicoRepositorio implements RecursoRepositorio<Periodico> {
 
     @Override
     public Collection<Periodico> buscar(String nombre) {
-        return new ArrayList<>(periodicos);
+        return periodicos.stream()
+                .filter(periodico -> periodico.coincideConCriterio(nombre))
+                .toList();
     }
 
     @Override
