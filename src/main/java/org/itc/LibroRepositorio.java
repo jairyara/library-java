@@ -1,34 +1,14 @@
 package org.itc;
 
-    import org.springframework.stereotype.Component;
-
-    import java.util.ArrayList;
-import java.util.Collection;
+import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
-    @Component
-    public class LibroRepositorio implements RecursoRepositorio<Libro> {
-        private final List<Libro> libros = new ArrayList<>();
-
-        @Override
-        public void agregar(Libro libro) {
-            libros.add(libro);
-        }
-
-        @Override
-        public void eliminar(Libro libro) {
-            libros.remove(libro);
-        }
-
-        @Override
-        public Collection<Libro> buscar(String criterio) {
-            return libros.stream()
-                    .filter(libro -> libro.coincideConCriterio(criterio))
-                    .toList();
-        }
-
-        @Override
-        public List<Libro> obtenerTodos() {
-            return new ArrayList<>(libros);
-        }
+public interface LibroRepositorio extends CrudRepository<Libro, Integer> {
+    List<Libro> findByNombreContainingIgnoreCaseOrAutorContainingIgnoreCaseOrEditorialContainingIgnoreCaseOrIsbnContainingIgnoreCase(
+            String nombre, String autor, String editorial, String isbn);
+    
+    default List<Libro> findByCriteria(String criterio) {
+        return findByNombreContainingIgnoreCaseOrAutorContainingIgnoreCaseOrEditorialContainingIgnoreCaseOrIsbnContainingIgnoreCase(
+                criterio, criterio, criterio, criterio);
     }
+}

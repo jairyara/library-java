@@ -1,63 +1,55 @@
 package org.itc;
 
-    import org.springframework.beans.factory.annotation.Autowired;
-    import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-    import java.util.*;
-    import java.util.stream.Collectors;
+import java.util.List;
 
-    @Component
-    public class ServicioBiblioteca {
-        private final RecursoRepositorio<Libro> repositorioLibro;
-        private final RecursoRepositorio<Computador> repositorioComputador;
-        private final RecursoRepositorio<Periodico> repositorioPeriodico;
+@Service
+public class ServicioBiblioteca {
+    @Autowired
+    private LibroRepositorio libroRepositorio;
+    @Autowired
+    private PeriodicoRepositorio periodicoRepositorio;
+    @Autowired
+    private ComputadorRepositorio computadorRepositorio;
 
-        @Autowired
-        public ServicioBiblioteca(RecursoRepositorio<Libro> repositorioLibro, RecursoRepositorio<Computador> repositorioComputador, RecursoRepositorio<Periodico> repositorioPeriodico) {
-            this.repositorioLibro = repositorioLibro;
-            this.repositorioComputador = repositorioComputador;
-            this.repositorioPeriodico = repositorioPeriodico;
-        }
-
-        public void agregar(Recurso recurso) {
-            if (recurso != null) {
-                if (recurso instanceof Libro) {
-                    repositorioLibro.agregar((Libro) recurso);
-                } else if (recurso instanceof Computador) {
-                    repositorioComputador.agregar((Computador) recurso);
-                }
-            }
-        }
-
-        public void quitarRecurso(Recurso recurso) {
-            if (recurso instanceof Libro) {
-                repositorioLibro.eliminar((Libro) recurso);
-            } else if (recurso instanceof Computador) {
-                repositorioComputador.eliminar((Computador) recurso);
-            } else if (recurso instanceof Periodico) {
-                repositorioPeriodico.eliminar((Periodico) recurso);
-            }
-        }
-
-        public Collection<Recurso> buscar(String criterio) {
-            List<Recurso> resultados = new ArrayList<>();
-            resultados.addAll(repositorioLibro.obtenerTodos().stream()
-                    .filter(recurso -> recurso.coincideConCriterio(criterio))
-                    .collect(Collectors.toList()));
-            resultados.addAll(repositorioComputador.obtenerTodos().stream()
-                    .filter(recurso -> recurso.coincideConCriterio(criterio))
-                    .collect(Collectors.toList()));
-            resultados.addAll(repositorioPeriodico.obtenerTodos().stream()
-                    .filter(recurso -> recurso.coincideConCriterio(criterio))
-                    .collect(Collectors.toList()));
-            return resultados;
-        }
-
-        public Collection<Recurso> obtenerTodos() {
-            List<Recurso> todosRecursos = new ArrayList<>();
-            todosRecursos.addAll(repositorioLibro.obtenerTodos());
-            todosRecursos.addAll(repositorioComputador.obtenerTodos());
-            todosRecursos.addAll(repositorioPeriodico.obtenerTodos());
-            return todosRecursos;
-        }
+    public void agregarLibro(Libro libro) {
+        libroRepositorio.save(libro);
     }
+
+    public void agregarPeriodico(Periodico periodico) {
+        periodicoRepositorio.save(periodico);
+    }
+
+    public void agregarComputador(Computador computador) {
+        computadorRepositorio.save(computador);
+    }
+
+    public List<Libro> buscarLibros(String criterio) {
+        return libroRepositorio.findByCriteria(criterio);
+    }
+
+    public List<Periodico> buscarPeriodicos(String criterio) {
+        return periodicoRepositorio.findByCriteria(criterio);
+    }
+
+    public List<Computador> buscarComputadores(String criterio) {
+        return computadorRepositorio.findByCriteria(criterio);
+    }
+
+    public void darDeBajaLibro(Libro libro) {
+        libro.darDeBaja();
+        libroRepositorio.save(libro);
+    }
+
+    public void darDeBajaPeriodico(Periodico periodico) {
+        periodico.darDeBaja();
+        periodicoRepositorio.save(periodico);
+    }
+
+    public void darDeBajaComputador(Computador computador) {
+        computador.darDeBaja();
+        computadorRepositorio.save(computador);
+    }
+}
