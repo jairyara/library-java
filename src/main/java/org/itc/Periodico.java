@@ -6,18 +6,30 @@ public class Periodico extends Recurso{
     private LocalDate fechaPublicacion;
     private String editorial;
 
-    public Periodico(LocalDate _fechaPublicacion,String _editorial){
+    public Periodico(LocalDate fechaPublicacion,String editorial){
         super();
-        fechaPublicacion = _fechaPublicacion;
-        editorial = _editorial;
+        this.fechaPublicacion = fechaPublicacion;
+        this.editorial = editorial;
     }
 
-    public boolean coincideConCriterio(String criterio) {
-        // Verifica si el nombre coincide exactamente con el criterio
-        return nombre.equals(criterio);  // Retorna true si coincide, false si no
+    public String getEditorial(){
+        return editorial;
     }
-    public String toString(){
-        return "Recurso[activo="+activo+",fechaIngreso="+fechaIngreso+"nombre="+nombre+"] ";
+
+    @Override
+    public boolean coincideConCriterio(String criterio) {
+        return super.coincideConCriterio(criterio) ||
+                fechaPublicacion.toString().contains(criterio) ||
+                editorial.equalsIgnoreCase(criterio);
+    }
+    @Override
+    public String toString() {
+        return "PERIODICO\n" +
+                "Nombre=" + getNombre() + "\n" +
+                "FechaIngreso=" + getFechaIngreso() + "\n" +
+                "Activo=" + isActivo() + "\n" +
+                "FechaPublicacion=" + fechaPublicacion + "\n" +
+                "Editorial=" + editorial + "\n";
     }
     
 }

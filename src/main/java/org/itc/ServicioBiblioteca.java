@@ -1,32 +1,63 @@
 package org.itc;
 
-import java.util.*;
-import java.util.stream.Collectors;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.stereotype.Component;
 
-public class ServicioBiblioteca {
-    private List<Recurso> recursos;
+    import java.util.*;
+    import java.util.stream.Collectors;
 
-    public ServicioBiblioteca() {
-        this.recursos = new ArrayList<>();
-    }
+    @Component
+    public class ServicioBiblioteca {
+        private final RecursoRepositorio<Libro> repositorioLibro;
+        private final RecursoRepositorio<Computador> repositorioComputador;
+        private final RecursoRepositorio<Periodico> repositorioPeriodico;
 
-    public void agregar(Recurso recurso) {
-        if (recurso != null) {
-            recursos.add(recurso);
+        @Autowired
+        public ServicioBiblioteca(RecursoRepositorio<Libro> repositorioLibro, RecursoRepositorio<Computador> repositorioComputador, RecursoRepositorio<Periodico> repositorioPeriodico) {
+            this.repositorioLibro = repositorioLibro;
+            this.repositorioComputador = repositorioComputador;
+            this.repositorioPeriodico = repositorioPeriodico;
+        }
+
+        public void agregar(Recurso recurso) {
+            if (recurso != null) {
+                if (recurso instanceof Libro) {
+                    repositorioLibro.agregar((Libro) recurso);
+                } else if (recurso instanceof Computador) {
+                    repositorioComputador.agregar((Computador) recurso);
+                }
+            }
+        }
+
+        public void quitarRecurso(Recurso recurso) {
+            if (recurso instanceof Libro) {
+                repositorioLibro.eliminar((Libro) recurso);
+            } else if (recurso instanceof Computador) {
+                repositorioComputador.eliminar((Computador) recurso);
+            } else if (recurso instanceof Periodico) {
+                repositorioPeriodico.eliminar((Periodico) recurso);
+            }
+        }
+
+        public Collection<Recurso> buscar(String criterio) {
+            List<Recurso> resultados = new ArrayList<>();
+            resultados.addAll(repositorioLibro.obtenerTodos().stream()
+                    .filter(recurso -> recurso.coincideConCriterio(criterio))
+                    .collect(Collectors.toList()));
+            resultados.addAll(repositorioComputador.obtenerTodos().stream()
+                    .filter(recurso -> recurso.coincideConCriterio(criterio))
+                    .collect(Collectors.toList()));
+            resultados.addAll(repositorioPeriodico.obtenerTodos().stream()
+                    .filter(recurso -> recurso.coincideConCriterio(criterio))
+                    .collect(Collectors.toList()));
+            return resultados;
+        }
+
+        public Collection<Recurso> obtenerTodos() {
+            List<Recurso> todosRecursos = new ArrayList<>();
+            todosRecursos.addAll(repositorioLibro.obtenerTodos());
+            todosRecursos.addAll(repositorioComputador.obtenerTodos());
+            todosRecursos.addAll(repositorioPeriodico.obtenerTodos());
+            return todosRecursos;
         }
     }
-
-    public void quitarRecurso(Recurso recurso) {
-        recursos.remove(recurso);
-    }
-
-    public Collection<Recurso> buscarRecursos(String criterio) {
-        return recursos.stream()
-                .filter(recurso -> recurso.coincideConCriterio(criterio))
-                .collect(Collectors.toList());
-    }
-
-    public Collection<Recurso> obtenerTodos() {
-        return new ArrayList<>(recursos);
-    }
-}

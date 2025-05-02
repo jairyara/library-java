@@ -2,15 +2,20 @@ package org.itc;
 
 import java.time.LocalDateTime;
 
-abstract class Recurso {
-    protected String nombre;
-    protected LocalDateTime fechaIngreso;
-    protected boolean activo;
+public abstract class Recurso {
+    private String nombre;
+    private LocalDateTime fechaIngreso;
+    private boolean activo;
+    private String estado ="Activo";
 
     public Recurso() {
         this.nombre = nombre;
         this.fechaIngreso = fechaIngreso;
         this.activo = activo;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getNombre(){
@@ -19,6 +24,14 @@ abstract class Recurso {
 
     public LocalDateTime getFechaIngreso(){
         return fechaIngreso;        
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public boolean isActivo() {
+        return activo;
     }
     
    
@@ -32,19 +45,27 @@ abstract class Recurso {
 
     public void darDeBaja() {
         if (activo) {
-            activo = false;  // Cambia el estado a inactivo
+            activo = false;
+            estado ="inactivo";  // Cambia el estado a inactivo
             System.out.println("El usuario ha sido dado de baja.");
         } else {
             System.out.println("El usuario ya está inactivo.");
         }
-    } 
-    public boolean coincideConCriterio(String criterio) {
-        // Verifica si el nombre coincide exactamente con el criterio
-        return nombre.equals(criterio);  // Retorna true si coincide, false si no
     }
-    
-    public String toString(){
-        return "Recurso[activo="+activo+",fechaIngreso="+fechaIngreso+"nombre="+nombre+"] ";
+
+    public boolean coincideConCriterio(String criterio) {
+        if (nombre == null || criterio == null) {
+            return false;
+        }
+        return nombre.trim().equalsIgnoreCase(criterio.trim());
+    }
+
+    @Override
+    public String toString() {
+        return "RECURSO\n" +
+                "Nombre=" + nombre + "\n" +
+                "FechaIngreso=" + fechaIngreso + "\n" +
+                "Activo=" + activo + "\n";
     }
 
 }

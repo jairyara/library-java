@@ -1,13 +1,15 @@
 package org.itc;
+
+
 public class Computador extends Recurso{
     private String marca;
     private String modelo;
     private String sistemaOperativo;
 
-    public Computador(String _marca,String _modelo,String _sistemaOperativo){
-        marca = _marca;
-        modelo= _modelo;
-        sistemaOperativo = _sistemaOperativo;
+    public Computador(String marca,String modelo,String sistemaOperativo){
+        this.marca = marca;
+        this.modelo= modelo;
+        this.sistemaOperativo = sistemaOperativo;
 
     }
     public String getMarca(){
@@ -21,12 +23,23 @@ public class Computador extends Recurso{
     public String getSistemaOperativo(){
         return sistemaOperativo;
     }
-    
+
+    @Override
     public boolean coincideConCriterio(String criterio) {
-        // Verifica si el nombre coincide exactamente con el criterio
-        return nombre.equals(criterio);  // Retorna true si coincide, false si no
+        return super.coincideConCriterio(criterio) ||
+                marca.equalsIgnoreCase(criterio) ||
+                modelo.equalsIgnoreCase(criterio) ||
+                sistemaOperativo.equalsIgnoreCase(criterio);
     }
-    public String toString(){
-        return "Recurso[activo="+activo+",fechaIngreso="+fechaIngreso+"nombre="+nombre+"] ";
+
+    @Override
+    public String toString() {
+        return "COMPUTADOR\n" +
+                "Nombre=" + getNombre() + "\n" +
+                "FechaIngreso=" + getFechaIngreso() + "\n" +
+                "Activo=" + isActivo() + "\n" +
+                "Marca=" + marca + "\n" +
+                "Modelo=" + modelo + "\n" +
+                "SistemaOperativo=" + sistemaOperativo + "\n";
     }
 }
