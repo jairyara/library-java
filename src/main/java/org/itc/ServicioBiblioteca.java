@@ -1,18 +1,24 @@
 package org.itc;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class ServicioBiblioteca {
-    @Autowired
-    private LibroRepositorio libroRepositorio;
-    @Autowired
-    private PeriodicoRepositorio periodicoRepositorio;
-    @Autowired
-    private ComputadorRepositorio computadorRepositorio;
+
+    private final LibroRepositorio libroRepositorio;
+    private final PeriodicoRepositorio periodicoRepositorio;
+    private final ComputadorRepositorio computadorRepositorio;
+
+    // Constructor para inyección de dependencias
+    public ServicioBiblioteca(LibroRepositorio libroRepositorio, 
+                               PeriodicoRepositorio periodicoRepositorio, 
+                               ComputadorRepositorio computadorRepositorio) {
+        this.libroRepositorio = libroRepositorio;
+        this.periodicoRepositorio = periodicoRepositorio;
+        this.computadorRepositorio = computadorRepositorio;
+    }
 
     public void agregarLibro(Libro libro) {
         libroRepositorio.save(libro);

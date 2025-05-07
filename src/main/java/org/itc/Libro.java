@@ -1,8 +1,10 @@
 package org.itc;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 import java.time.LocalDate;
 
+@Table(name = "Libro")
 public class Libro implements Recurso {
     @Id
     private Integer id;
