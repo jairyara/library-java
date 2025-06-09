@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Biblioteca - Frontend Simple</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <h1>Biblioteca - Frontend REST</h1>
+
+    <!-- ========== SECCIÓN LIBROS ========== -->
+    <section>
+        <h2>Libros</h2>
+
+        <button onclick="listarLibros()">Listar Libros</button>
+        <pre id="libros"></pre>
+
+        <h3>Agregar Libro</h3>
+        <label>Nombre: <input id="libroNombre"></label>
+        <label>Fecha Ingreso (AAAA-MM-DD): <input id="libroFechaIngreso"></label>
+        <label>Autor: <input id="libroAutor"></label>
+        <label>Editorial: <input id="libroEditorial"></label>
+        <label>ISBN: <input id="libroIsbn"></label>
+        <button onclick="agregarLibro()">Agregar Libro</button>
+
+        <h3>Dar de baja Libro (por ID)</h3>
+        <label>ID: <input id="libroDarDeBajaId"></label>
+        <button onclick="darDeBajaLibro()">Dar de Baja</button>
+    </section>
+
+    <hr>
+
+    <!-- ========== SECCIÓN PERIODICOS ========== -->
+    <section>
+        <h2>Periódicos</h2>
+
+        <button onclick="listarPeriodicos()">Listar Periódicos</button>
+        <pre id="periodicos"></pre>
+
+        <h3>Agregar Periódico</h3>
+        <label>Nombre: <input id="periodicoNombre"></label>
+        <label>Fecha Ingreso (AAAA-MM-DD): <input id="periodicoFechaIngreso"></label>
+        <label>Editorial: <input id="periodicoEditorial"></label>
+        <label>Fecha Publicación (AAAA-MM-DD): <input id="periodicoFechaPublicacion"></label>
+        <button onclick="agregarPeriodico()">Agregar Periódico</button>
+
+        <h3>Dar de baja Periódico (por ID)</h3>
+        <label>ID: <input id="periodicoDarDeBajaId"></label>
+        <button onclick="darDeBajaPeriodico()">Dar de Baja</button>
+    </section>
+
+    <hr>
+
+    <!-- ========== SECCIÓN COMPUTADORES ========== -->
+    <section>
+        <h2>Computadores</h2>
+
+        <button onclick="listarComputadores()">Listar Computadores</button>
+        <pre id="computadores"></pre>
+
+        <h3>Agregar Computador</h3>
+        <label>Nombre: <input id="computadorNombre"></label>
+        <label>Fecha Ingreso (AAAA-MM-DD): <input id="computadorFechaIngreso"></label>
+        <label>Tipo (escribe el valor del enum TipoComputador): <input id="computadorTipo"></label>
+        <label>Marca: <input id="computadorMarca"></label>
+        <label>Modelo: <input id="computadorModelo"></label>
+        <button onclick="agregarComputador()">Agregar Computador</button>
+
+        <h3>Dar de baja Computador (por ID)</h3>
+        <label>ID: <input id="computadorDarDeBajaId"></label>
+        <button onclick="darDeBajaComputador()">Dar de Baja</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
