@@ -1,46 +1,77 @@
 package org.itc;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
+import java.time.LocalDate;
 
-public class Libro extends Recurso {
+@Table(name = "Libro")
+public class Libro implements Recurso {
+    @Id
+    private Integer id;
+    private String nombre;
+    private LocalDate fechaIngreso;
+    private boolean activo;
+    private String estado = "Activo";
     private String autor;
     private String editorial;
-    private int anio;
+    private String isbn;
 
-    public Libro(String autor,String editoria,int anio){
-        super();
-        this.autor =autor;
-        this.editorial =editoria;
-        this.anio = anio;
+    public Libro() {
+    }
+
+    public Libro(String nombre, LocalDate fechaIngreso, boolean activo, String autor, String editorial, String isbn) {
+        this.nombre = nombre;
+        this.fechaIngreso = fechaIngreso;
+        this.activo = activo;
+        this.autor = autor;
+        this.editorial = editorial;
+        this.isbn = isbn;
+    }
+
+    @Override
+    public String getNombre() {
+        return nombre;
+    }
+
+    @Override
+    public LocalDate getFechaIngreso() {
+        return fechaIngreso;
+    }
+
+    @Override
+    public boolean isActivo() {
+        return activo;
+    }
+
+    @Override
+    public void darDeBaja() {
+        if (activo) {
+            activo = false;
+            estado = "inactivo";
+        }
     }
 
     public String getAutor() {
         return autor;
     }
 
-    public String getEditorial(){
+    public String getEditorial() {
         return editorial;
     }
 
-    public int getanio(){
-        return anio;
-    }
-    @Override
-    public boolean coincideConCriterio(String criterio) {
-        return super.coincideConCriterio(criterio) ||
-                autor.equalsIgnoreCase(criterio) ||
-                editorial.equalsIgnoreCase(criterio) ||
-                Integer.toString(anio).equals(criterio);
+    public String getIsbn() {
+        return isbn;
     }
 
     @Override
     public String toString() {
         return "LIBRO\n" +
-                "Nombre=" + getNombre() + "\n" +
-                "FechaIngreso=" + getFechaIngreso() + "\n" +
-                "Activo=" + isActivo() + "\n" +
+                "Id=" + id + "\n" +
+                "Nombre=" + nombre + "\n" +
+                "FechaIngreso=" + fechaIngreso + "\n" +
+                "Activo=" + activo + "\n" +
                 "Autor=" + autor + "\n" +
                 "Editorial=" + editorial + "\n" +
-                "Año=" + anio + "\n";
+                "ISBN=" + isbn + "\n";
     }
-
 }
