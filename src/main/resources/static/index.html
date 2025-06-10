@@ -4,76 +4,80 @@
 <head>
     <meta charset="UTF-8" />
     <title>Biblioteca - Frontend Simple</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body>
-    <h1>Biblioteca - Frontend REST</h1>
+<main class="min-h-screen w-full p-16 flex gap-4 flex-col">
+
+    <h1 class="text-center text-2xl font-bold ">Biblioteca</h1>
 
     <!-- ========== SECCIÓN LIBROS ========== -->
-    <section>
+    <section class="border-2 border-emerald-200 rounded p-4">
         <h2>Libros</h2>
 
-        <button onclick="listarLibros()">Listar Libros</button>
+        <button class="bg-emerald-500 text-white p-2 rounded" onclick="listarLibros()">Listar Libros</button>
         <pre id="libros"></pre>
 
-        <h3>Agregar Libro</h3>
-        <label>Nombre: <input id="libroNombre"></label>
-        <label>Fecha Ingreso (AAAA-MM-DD): <input id="libroFechaIngreso"></label>
-        <label>Autor: <input id="libroAutor"></label>
-        <label>Editorial: <input id="libroEditorial"></label>
-        <label>ISBN: <input id="libroIsbn"></label>
-        <button onclick="agregarLibro()">Agregar Libro</button>
-
-        <h3>Dar de baja Libro (por ID)</h3>
-        <label>ID: <input id="libroDarDeBajaId"></label>
-        <button onclick="darDeBajaLibro()">Dar de Baja</button>
+        <div class="grid grid-cols-2 gap-4">
+            <h3>Agregar Libro</h3>
+            <label>Nombre: <input class="border border-slate-400 rounded" id="libroNombre"></label>
+            <label>Fecha Ingreso (AAAA-MM-DD): <input class="border border-slate-400 rounded" id="libroFechaIngreso"></label>
+            <label>Autor: <input class="border border-slate-400 rounded" id="libroAutor"></label>
+            <label>Editorial: <input class="border border-slate-400 rounded" id="libroEditorial"></label>
+            <label>ISBN: <input class="border border-slate-400 rounded" id="libroIsbn"></label>
+            <button class="bg-emerald-500 text-white p-2 rounded" onclick="agregarLibro()">Agregar Libro</button>
+            <div>
+                <h3>Dar de baja Libro (por ID)</h3>
+                <label>ID: <input class="border border-slate-400 rounded" id="libroDarDeBajaId"></label>
+                <button class="bg-emerald-500 text-white p-2 rounded" onclick="darDeBajaLibro()">Dar de Baja</button>
+            </div>
+        </div>
     </section>
 
-    <hr>
-
     <!-- ========== SECCIÓN PERIODICOS ========== -->
-    <section>
+    <section class="border-2 border-emerald-200 rounded p-4">
         <h2>Periódicos</h2>
 
-        <button onclick="listarPeriodicos()">Listar Periódicos</button>
+        <button class="bg-emerald-500 text-white p-2 rounded" onclick="listarPeriodicos()">Listar Periódicos</button>
         <pre id="periodicos"></pre>
 
         <h3>Agregar Periódico</h3>
-        <label>Nombre: <input id="periodicoNombre"></label>
-        <label>Fecha Ingreso (AAAA-MM-DD): <input id="periodicoFechaIngreso"></label>
-        <label>Editorial: <input id="periodicoEditorial"></label>
-        <label>Fecha Publicación (AAAA-MM-DD): <input id="periodicoFechaPublicacion"></label>
-        <button onclick="agregarPeriodico()">Agregar Periódico</button>
+        <label>Nombre: <input class="border border-slate-400 rounded" id="periodicoNombre"></label>
+        <label>Fecha Ingreso (AAAA-MM-DD): <input class="border border-slate-400 rounded" id="periodicoFechaIngreso"></label>
+        <label>Editorial: <input class="border border-slate-400 rounded" id="periodicoEditorial"></label>
+        <label>Fecha Publicación (AAAA-MM-DD): <input class="border border-slate-400 rounded" id="periodicoFechaPublicacion"></label>
+        <button class="bg-emerald-500 text-white p-2 rounded" onclick="agregarPeriodico()">Agregar Periódico</button>
 
         <h3>Dar de baja Periódico (por ID)</h3>
-        <label>ID: <input id="periodicoDarDeBajaId"></label>
-        <button onclick="darDeBajaPeriodico()">Dar de Baja</button>
+        <label>ID: <input class="border border-slate-400 rounded" id="periodicoDarDeBajaId"></label>
+        <button class="bg-emerald-500 text-white p-2 rounded" onclick="darDeBajaPeriodico()">Dar de Baja</button>
     </section>
 
-    <hr>
 
     <!-- ========== SECCIÓN COMPUTADORES ========== -->
-    <section>
+    <section class="border-2 border-emerald-200 rounded p-4">
         <h2>Computadores</h2>
 
-        <button onclick="listarComputadores()">Listar Computadores</button>
+        <button class="bg-emerald-500 text-white p-2 rounded" onclick="listarComputadores()">Listar Computadores</button>
         <pre id="computadores"></pre>
 
         <h3>Agregar Computador</h3>
-        <label>Nombre: <input id="computadorNombre"></label>
-        <label>Fecha Ingreso (AAAA-MM-DD): <input id="computadorFechaIngreso"></label>
-        <label>Tipo (escribe el valor del enum TipoComputador): <input id="computadorTipo"></label>
-        <label>Marca: <input id="computadorMarca"></label>
-        <label>Modelo: <input id="computadorModelo"></label>
-        <button onclick="agregarComputador()">Agregar Computador</button>
+        <label>Nombre: <input class="border border-slate-400 rounded" id="computadorNombre"></label>
+        <label>Fecha Ingreso (AAAA-MM-DD): <input class="border border-slate-400 rounded" id="computadorFechaIngreso"></label>
+        <label>Tipo (escribe el valor del enum TipoComputador): <input class="border border-slate-400 rounded" id="computadorTipo"></label>
+        <label>Marca: <input class="border border-slate-400 rounded" id="computadorMarca"></label>
+        <label>Modelo: <input class="border border-slate-400 rounded" id="computadorModelo"></label>
+        <button class="bg-emerald-500 text-white p-2 rounded" onclick="agregarComputador()">Agregar Computador</button>
 
         <h3>Dar de baja Computador (por ID)</h3>
-        <label>ID: <input id="computadorDarDeBajaId"></label>
-        <button onclick="darDeBajaComputador()">Dar de Baja</button>
+        <label>ID: <input class="border border-slate-400 rounded" id="computadorDarDeBajaId"></label>
+        <button class="bg-emerald-500 text-white p-2 rounded"  onclick="darDeBajaComputador()">Dar de Baja</button>
     </section>
 
-    <script src="script.js"></script>
+</main>
 </body>
+<script src="script.js"></script>
 
 </html>
