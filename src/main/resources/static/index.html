@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Biblioteca - Frontend Simple</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+<main class="min-h-screen w-full p-16 flex gap-4 flex-col">
+
+    <h1 class="text-center text-2xl font-bold ">Biblioteca</h1>
+
+    <!-- ========== SECCIÓN LIBROS ========== -->
+    <section class="border-2 border-emerald-200 rounded p-4">
+        <h2>Libros</h2>
+
+        <button class="bg-emerald-500 text-white p-2 rounded" onclick="listarLibros()">Listar Libros</button>
+        <pre id="libros"></pre>
+
+        <div class="grid grid-cols-2 gap-4">
+            <h3>Agregar Libro</h3>
+            <label>Nombre: <input class="border border-slate-400 rounded" id="libroNombre"></label>
+            <label>Fecha Ingreso (AAAA-MM-DD): <input class="border border-slate-400 rounded" id="libroFechaIngreso"></label>
+            <label>Autor: <input class="border border-slate-400 rounded" id="libroAutor"></label>
+            <label>Editorial: <input class="border border-slate-400 rounded" id="libroEditorial"></label>
+            <label>ISBN: <input class="border border-slate-400 rounded" id="libroIsbn"></label>
+            <button class="bg-emerald-500 text-white p-2 rounded" onclick="agregarLibro()">Agregar Libro</button>
+            <div>
+                <h3>Dar de baja Libro (por ID)</h3>
+                <label>ID: <input class="border border-slate-400 rounded" id="libroDarDeBajaId"></label>
+                <button class="bg-emerald-500 text-white p-2 rounded" onclick="darDeBajaLibro()">Dar de Baja</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECCIÓN PERIODICOS ========== -->
+    <section class="border-2 border-emerald-200 rounded p-4">
+        <h2>Periódicos</h2>
+
+        <button class="bg-emerald-500 text-white p-2 rounded" onclick="listarPeriodicos()">Listar Periódicos</button>
+        <pre id="periodicos"></pre>
+
+        <h3>Agregar Periódico</h3>
+        <label>Nombre: <input class="border border-slate-400 rounded" id="periodicoNombre"></label>
+        <label>Fecha Ingreso (AAAA-MM-DD): <input class="border border-slate-400 rounded" id="periodicoFechaIngreso"></label>
+        <label>Editorial: <input class="border border-slate-400 rounded" id="periodicoEditorial"></label>
+        <label>Fecha Publicación (AAAA-MM-DD): <input class="border border-slate-400 rounded" id="periodicoFechaPublicacion"></label>
+        <button class="bg-emerald-500 text-white p-2 rounded" onclick="agregarPeriodico()">Agregar Periódico</button>
+
+        <h3>Dar de baja Periódico (por ID)</h3>
+        <label>ID: <input class="border border-slate-400 rounded" id="periodicoDarDeBajaId"></label>
+        <button class="bg-emerald-500 text-white p-2 rounded" onclick="darDeBajaPeriodico()">Dar de Baja</button>
+    </section>
+
+
+    <!-- ========== SECCIÓN COMPUTADORES ========== -->
+    <section class="border-2 border-emerald-200 rounded p-4">
+        <h2>Computadores</h2>
+
+        <button class="bg-emerald-500 text-white p-2 rounded" onclick="listarComputadores()">Listar Computadores</button>
+        <pre id="computadores"></pre>
+
+        <h3>Agregar Computador</h3>
+        <label>Nombre: <input class="border border-slate-400 rounded" id="computadorNombre"></label>
+        <label>Fecha Ingreso (AAAA-MM-DD): <input class="border border-slate-400 rounded" id="computadorFechaIngreso"></label>
+        <label>Tipo (escribe el valor del enum TipoComputador): <input class="border border-slate-400 rounded" id="computadorTipo"></label>
+        <label>Marca: <input class="border border-slate-400 rounded" id="computadorMarca"></label>
+        <label>Modelo: <input class="border border-slate-400 rounded" id="computadorModelo"></label>
+        <button class="bg-emerald-500 text-white p-2 rounded" onclick="agregarComputador()">Agregar Computador</button>
+
+        <h3>Dar de baja Computador (por ID)</h3>
+        <label>ID: <input class="border border-slate-400 rounded" id="computadorDarDeBajaId"></label>
+        <button class="bg-emerald-500 text-white p-2 rounded"  onclick="darDeBajaComputador()">Dar de Baja</button>
+    </section>
+
+</main>
+</body>
+<script src="script.js"></script>
+
+</html>
