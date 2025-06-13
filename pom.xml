@@ -65,7 +65,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>org.itc.Main</mainClass>
+                            <mainClass>org.itc.LibraryApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
